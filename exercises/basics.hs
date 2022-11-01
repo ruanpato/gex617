@@ -1,4 +1,4 @@
-module FirstClass where
+module Basics where
 
 import Data.Bool
 import Data.Foldable
@@ -35,7 +35,7 @@ factorial n = n * factorial (n - 1)
 verifyIfListOrFirstListIsEmpty :: Foldable t => [t a] -> Bool
 verifyIfListOrFirstListIsEmpty x = (null x) || (null (head x))
 
--- Verify if list 
+-- Verify if list has only one element
 lengthEqualOne :: [a] -> Bool
 lengthEqualOne x = not (null x) && null (tail x)
 
