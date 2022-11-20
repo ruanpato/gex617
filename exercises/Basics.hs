@@ -22,14 +22,9 @@ vAbs n | n > 0 = n
 
 -- Return -1 if n is negative, 0 if n is zero, otherwise returns 1
 signal :: Int -> Int
-signal n | n < 0 = -1
-         | n == 0 = 0
-         | otherwise = 1
-
--- Return the factorial of n
-factorial :: Integer -> Integer
-factorial 0 = 1
-factorial n = n * factorial (n - 1)
+signal n | n < 0 = -1     -- conditional guards |
+         | n == 0 = 0     -- conditional guards |
+         | otherwise = 1  -- conditional guards default | otherwise
 
 -- Verify if list is empty, or if the first element is an list that is empty
 verifyIfListOrFirstListIsEmpty :: Foldable t => [t a] -> Bool
@@ -57,3 +52,23 @@ averageGrades grade1 grade2 grade3 = (grade1 + grade2 + grade3)/3
 -}
 calculateKillowatts :: Fractional a => a -> a -> a
 calculateKillowatts minimunWage killowatt = (killowatt * (minimunWage / 5)) * 0.85
+
+-- let scope in expression
+triangleAreaIn :: Floating a => a -> a -> a -> a
+triangleAreaIn a b c = let s = (a + b + c) / 2
+  in sqrt (s * (s - a) * (s - b) * (s - c))
+
+-- where scope in function
+-- triangleAreaWhere :: Floating genericNum => genericNumA -> genericNumB -> genericNumC -> genericNumReturn
+triangleAreaWhere :: Floating a => a -> a -> a -> a
+triangleAreaWhere a b c = sqrt (s * (s - a) * (s - b) * (s - c))
+  where
+    s = (a + b + c) / 2
+
+-- Where with more clausules usage
+whereUsage :: Num genericNum => genericNum -> genericNum
+whereUsage x = 3 + sumWithCMultipliedBySeven x + sumWithCMultipliedBySeven a + sumWithCMultipliedBySeven b
+  where sumWithCMultipliedBySeven x = x + 7 * c
+        a = 3 * c
+        b = sumWithCMultipliedBySeven 2
+        c = x * 20
