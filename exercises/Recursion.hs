@@ -17,6 +17,13 @@ lengthList :: Num p => [a] -> p
 lengthList list = if null list
     then 0
     else 1 + lengthList (tail list)
+-- lengthList [1, 2, 3, 4]
+-- lengthList 1 + lengthList[2, 3, 4]
+-- lengthList 1 + lengthList[3, 4]
+-- lengthList 1 + lengthList[4]
+-- lengthList 1 + lengthList[]
+-- lengthList 1 + 0
+
 
 -- Get list length recursively with pattern matching
 lengthList' :: Num p => [a] -> p
